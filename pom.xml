@@ -12,7 +12,9 @@
 	<artifactId>bbp-gateway-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bbp-gateway-service</name>
-	<description>Demo project for Spring Boot</description>
+	<description>API gateway</description>
+	<packaging>jar</packaging>
+
 
 	<properties>
 		<java.version>11</java.version>
