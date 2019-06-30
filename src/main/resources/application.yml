@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: 'bbp-gateway-service'
+server:
+  port: 8100
+eureka:
+  client:
+    registryFetchIntervalInSeconds: 10
+    serviceUrl:
+      defaultZone: http://localhost:8061/eureka/
+info:
+  app:
+    name: ${spring.application.name}
+    description: API Gateway Application. Single entrypoint for all requests
+    version: 1.0.0
+
+management:
+  endpoints.web.exposure.include: '*'
+  endpoint.health.show-details: always
+  security.enabled: false
+endpoints.health.sensitive: false
+zuul:
+  prefix: /api/v1
+  stripPrefix: false
+  routes:
+    users:
+      stripPrefix: false
+      path: /usersservice/**
+      serviceId: bbp-users-service
+    purchases:
+      stripPrefix: false
+      path: /purchaseservice/**
+      serviceId: bbp-purchase-service
+    warehouse:
+      stripPrefix: false
+      path: /warehouseservice/**
+      serviceId: bbp-warehouse-service
